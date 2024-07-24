@@ -23,3 +23,13 @@ user_pref("browser.download.always_ask_before_handling_new_types", false); // DE
 
 // user_pref("extensions.enabledScopes", 31) // [DEFAULT: 5]
 //user_pref("extensions.autoDisableScopes", 15); // [DEFAULT: 15]
+
+/* 1212: set OCSP fetch failures (non-stapled, see 1211) to hard-fail
+ * [SETUP-WEB] SEC_ERROR_OCSP_SERVER_ERROR
+ * When a CA cannot be reached to validate a cert, Firefox just continues the connection (=soft-fail)
+ * Setting this pref to true tells Firefox to instead terminate the connection (=hard-fail)
+ * It is pointless to soft-fail when an OCSP fetch fails: you cannot confirm a cert is still valid (it
+ * could have been revoked) and/or you could be under attack (e.g. malicious blocking of OCSP servers)
+ * [1] https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/
+ * [2] https://www.imperialviolet.org/2014/04/19/revchecking.html ***/
+user_pref("security.OCSP.require", false); // DEFAULT: true
