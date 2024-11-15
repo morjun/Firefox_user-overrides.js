@@ -32,5 +32,6 @@ user_pref("signon.rememberSignons", false);
  * could have been revoked) and/or you could be under attack (e.g. malicious blocking of OCSP servers)
  * [1] https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/
  * [2] https://www.imperialviolet.org/2014/04/19/revchecking.html ***/
-// user_pref("security.OCSP.require", false); // DEFAULT: true
+
+user_pref("security.OCSP.require", false); // DEFAULT: true
 user_pref("browser.display.use_system_colors", true); // [DEFAULT: false NON-WINDOWS]
