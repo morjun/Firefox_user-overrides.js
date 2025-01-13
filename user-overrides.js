@@ -49,5 +49,5 @@ user_pref("browser.display.use_system_colors", true); // [DEFAULT: false NON-WIN
  * The custom uri is the value shown when you "Choose provider>Custom>"
  * [NOTE] If you USE custom then "network.trr.uri" should be set the same
  * [SETTING] Privacy & Security>DNS over HTTPS>Increased/Max>Choose provider ***/
-   user_pref("network.trr.uri", "https://adguard.junserver.win/dns-query");
-   user_pref("network.trr.custom_uri", "https://adguard.junserver.win/dns-query");
+   user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
+   // user_pref("network.trr.custom_uri", "https://adguard.junserver.win/dns-query");
