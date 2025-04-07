@@ -44,10 +44,17 @@ user_pref("browser.display.use_system_colors", true); // [DEFAULT: false NON-WIN
  * [2] https://wiki.mozilla.org/Security/DOH-resolver-policy
  * [3] https://support.mozilla.org/kb/firefox-dns-over-https
  * [4] https://www.eff.org/deeplinks/2020/12/dns-doh-and-odoh-oh-my-year-review-2020 ***/
-   user_pref("network.trr.mode", 3);
+   user_pref("network.trr.mode", 2);
 /* 0712: set DoH provider
  * The custom uri is the value shown when you "Choose provider>Custom>"
  * [NOTE] If you USE custom then "network.trr.uri" should be set the same
  * [SETTING] Privacy & Security>DNS over HTTPS>Increased/Max>Choose provider ***/
    user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
    // user_pref("network.trr.custom_uri", "https://adguard.junserver.win/dns-query");
+
+
+/* 0808: disable recent searches [FF120+]
+ * [NOTE] Recent searches are cleared with history (2811)
+ * [1] https://support.mozilla.org/kb/search-suggestions-firefox ***/
+   user_pref("browser.urlbar.recentsearches.featureGate", false);
+
