@@ -58,3 +58,42 @@ user_pref("browser.display.use_system_colors", true); // [DEFAULT: false NON-WIN
  * [1] https://support.mozilla.org/kb/search-suggestions-firefox ***/
    user_pref("browser.urlbar.recentsearches.featureGate", false);
 
+
+/* 2810: enable Firefox to clear items on shutdown
+ * [NOTE] In FF129+ clearing "siteSettings" on shutdown (2811), or manually via site data (2820) and
+ * via history (2830), will no longer remove sanitize on shutdown "cookie and site data" site exceptions (2815)
+ * [SETTING] Privacy & Security>History>Custom Settings>Clear history when Firefox closes | Settings ***/
+user_pref("privacy.sanitize.sanitizeOnShutdown", true);
+
+/** SANITIZE ON SHUTDOWN: IGNORES "ALLOW" SITE EXCEPTIONS | v2 migration is FF128+ ***/
+/* 2811: set/enforce what items to clear on shutdown (if 2810 is true) [SETUP-CHROME]
+ * [NOTE] If "history" is true, downloads will also be cleared ***/
+user_pref("privacy.clearOnShutdown.cache", true);     // [DEFAULT: true]
+user_pref("privacy.clearOnShutdown_v2.cache", true);  // [FF128+] [DEFAULT: true]
+user_pref("privacy.clearOnShutdown.downloads", true); // [DEFAULT: true]
+user_pref("privacy.clearOnShutdown.formdata", true);  // [DEFAULT: true]
+user_pref("privacy.clearOnShutdown.history", true);   // [DEFAULT: true]
+user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", true); // [FF128+] [DEFAULT: true]
+
+/** SANITIZE HISTORY: IGNORES "ALLOW" SITE EXCEPTIONS | clearHistory migration is FF128+ ***/
+/* 2830: set manual "Clear History" items, also via Ctrl-Shift-Del [SETUP-CHROME]
+ * Firefox remembers your last choices. This will reset them when you start Firefox
+ * [NOTE] Regardless of what you set "downloads" to, as soon as the dialog
+ * for "Clear Recent History" is opened, it is synced to the same as "history"
+ * [SETTING] Privacy & Security>History>Custom Settings>Clear History ***/
+user_pref("privacy.cpd.cache", true);    // [DEFAULT: true]
+user_pref("privacy.clearHistory.cache", true);
+user_pref("privacy.cpd.formdata", true); // [DEFAULT: true]
+user_pref("privacy.cpd.history", true);  // [DEFAULT: true]
+   // user_pref("privacy.cpd.downloads", true); // not used, see note above
+user_pref("privacy.clearHistory.historyFormDataAndDownloads", true);
+// user_pref("privacy.cpd.cookies", false);
+user_pref("privacy.cpd.sessions", true); // [DEFAULT: true]
+// user_pref("privacy.cpd.offlineApps", false); // [DEFAULT: false]
+user_pref("privacy.clearHistory.cookiesAndStorage", true);
+   // user_pref("privacy.cpd.openWindows", false); // Session Restore
+   // user_pref("privacy.cpd.passwords", false);
+   // user_pref("privacy.cpd.siteSettings", false);
+   // user_pref("privacy.clearHistory.siteSettings", false);
+
+user_pref("places.history.enabled", false);
